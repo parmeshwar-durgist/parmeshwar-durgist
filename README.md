@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parmeshwar Durgist · 3D Profile</title>
   <style>
-    /* ================= RESET ================= */
     *, *::before, *::after {
       margin: 0;
       padding: 0;
@@ -20,7 +19,6 @@
       background: #03040c;
     }
 
-    /* ================= STARFIELD ================= */
     .stars {
       position: fixed;
       inset: 0;
