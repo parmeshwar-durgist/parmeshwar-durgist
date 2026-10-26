@@ -95,7 +95,6 @@
     <div class="badge">☁️ Docker / Cloud</div>
   </div>
 
-  <!-- Three.js from CDN -->
   <script type="importmap">
     {
       "imports": {
@@ -108,7 +107,6 @@
     import * as THREE from 'three';
     import { OrbitControls } from 'https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js';
 
-    // --- Setup Scene ---
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x050510);
     scene.fog = new THREE.FogExp2(0x050510, 0.002);
@@ -126,7 +124,6 @@
     renderer.toneMappingExposure = 1.2;
     document.body.appendChild(renderer.domElement);
 
-    // --- Controls (disabled auto-rotate, just drag for interactivity) ---
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
@@ -139,35 +136,27 @@
     controls.minDistance = 5;
     controls.maxDistance = 20;
 
-    // --- Lights ---
-    // Ambient base
     const ambient = new THREE.AmbientLight(0x404060);
     scene.add(ambient);
 
-    // Key light (cyan)
     const keyLight = new THREE.PointLight(0x00c2ff, 1.5, 30);
     keyLight.position.set(3, 5, 5);
     scene.add(keyLight);
 
-    // Fill light (warm)
     const fillLight = new THREE.PointLight(0xffaa00, 0.8, 30);
     fillLight.position.set(-4, 2, 4);
     scene.add(fillLight);
 
-    // Back rim light (purple)
     const rimLight = new THREE.PointLight(0x7b68ee, 1.2, 25);
     rimLight.position.set(-2, 1, -6);
     scene.add(rimLight);
 
-    // Additional top light
     const topLight = new THREE.DirectionalLight(0xffffff, 0.6);
     topLight.position.set(0, 10, 0);
     scene.add(topLight);
 
-    // --- Create the central 3D nameplate group ---
     const nameGroup = new THREE.Group();
 
-    // Main plate (rounded rectangle via box geometry)
     const plateWidth = 5.8;
     const plateHeight = 2.2;
     const plateDepth = 0.4;
@@ -187,7 +176,6 @@
     plate.position.y = 1.8;
     nameGroup.add(plate);
 
-    // Add a glowing edge to the plate (using thin boxes)
     const edgeMat = new THREE.MeshStandardMaterial({
       color: 0x00c2ff,
       emissive: new THREE.Color(0x00c2ff),
@@ -196,30 +184,19 @@
       opacity: 0.6
     });
     
-    // Top edge
     const topEdge = new THREE.Mesh(new THREE.BoxGeometry(plateWidth + 0.1, 0.05, 0.1), edgeMat);
     topEdge.position.set(0, 1.8 + plateHeight/2, 0);
     nameGroup.add(topEdge);
-    // Bottom edge
     const bottomEdge = new THREE.Mesh(new THREE.BoxGeometry(plateWidth + 0.1, 0.05, 0.1), edgeMat);
     bottomEdge.position.set(0, 1.8 - plateHeight/2, 0);
     nameGroup.add(bottomEdge);
-    // Left edge
     const leftEdge = new THREE.Mesh(new THREE.BoxGeometry(0.05, plateHeight, 0.1), edgeMat);
     leftEdge.position.set(-plateWidth/2, 1.8, 0);
     nameGroup.add(leftEdge);
-    // Right edge
     const rightEdge = new THREE.Mesh(new THREE.BoxGeometry(0.05, plateHeight, 0.1), edgeMat);
     rightEdge.position.set(plateWidth/2, 1.8, 0);
     nameGroup.add(rightEdge);
 
-    // --- 3D Text: "PARMESHWAR" ---
-    // Since loading font is async, we use simple extruded text via canvas texture on a plane? 
-    // But for pure 3D text, we'll use TextGeometry. However, to keep this self-contained and fast, 
-    // we'll create a stylized "3D text effect" using multiple planes with canvas textures (simpler and reliable).
-    // Actually, let's create a canvas-based texture on a plane that looks like 3D text with bevel.
-    // Better: Use a simple extruded shape? That requires font loading.
-    // For a professional look without external font, we'll use a canvas texture with 3D shading effect.
 
     function createTextTexture(text, color = '#ffffff', glowColor = '#00c2ff') {
       const canvas = document.createElement('canvas');
@@ -227,10 +204,8 @@
       canvas.width = 1024;
       canvas.height = 256;
 
-      // Background transparent
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Text style
       ctx.font = 'bold 120px "Inter", "Segoe UI", "Helvetica Neue", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
