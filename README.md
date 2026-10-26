@@ -1,479 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3D Professional Profile – Parmeshwar Durgist</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-      background-color: #050510;
-    }
-    #info {
-      position: absolute;
-      top: 20px;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      color: white;
-      pointer-events: none;
-      z-index: 10;
-      text-shadow: 0 0 20px rgba(0, 194, 255, 0.5);
-    }
-    #info h1 {
-      font-size: clamp(1.8rem, 8vw, 3.5rem);
-      font-weight: 600;
-      margin: 0;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff, #00c2ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 15px rgba(0, 194, 255, 0.4));
-    }
-    #info p {
-      font-size: clamp(0.8rem, 3vw, 1.1rem);
-      margin: 8px 0 0;
-      color: #b0e0ff;
-      letter-spacing: 2px;
-      font-weight: 300;
-      opacity: 0.9;
-    }
-    .badge-container {
-      position: absolute;
-      bottom: 30px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      pointer-events: none;
-      z-index: 10;
-    }
-    .badge {
-      background: rgba(0, 194, 255, 0.15);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(0, 194, 255, 0.4);
-      color: #b0e0ff;
-      padding: 8px 24px;
-      border-radius: 40px;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 400;
-      box-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
-      animation: float 3s ease-in-out infinite;
-    }
-    .badge:nth-child(2) { animation-delay: 0.5s; }
-    .badge:nth-child(3) { animation-delay: 1s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-    .github-corner {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 20;
-    }
-    @media (max-width: 600px) {
-      .badge { font-size: 0.7rem; padding: 6px 16px; }
-    }
-  </style>
-</head>
-<body>
-  <div id="info">
-    <h1>Parmeshwar Durgist</h1>
-    <p>FULL STACK DEVELOPER • PROBLEM SOLVER</p>
-  </div>
+<div align="center">
 
-  <div class="badge-container">
-    <div class="badge">⚡ Full Stack</div>
-    <div class="badge">🐍 Python / JS</div>
-    <div class="badge">☁️ Docker / Cloud</div>
-  </div>
+  <!-- 3D-style gradient banner via capsule-render -->
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00C2FF,100:7B68EE&height=220&section=header&text=Parmeshwar%20Durgist&fontSize=70&fontColor=ffffff&fontAlignY=38&desc=Full%20Stack%20Developer%20%E2%80%A2%20Problem%20Solver&descAlignY=60&descSize=18&animation=fadeIn" width="100%" />
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
-      }
-    }
-  </script>
+  <!-- Typing animation SVG (works on GitHub) -->
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1000&color=00C2FF&center=true&vCenter=true&width=600&lines=Hi%2C+I'm+Parmeshwar+Durgist;Software+Developer+%7C+Problem+Solver;Building+clean%2C+scalable%2C+modern+solutions" alt="Typing SVG" />
 
-  <script type="module">
-    import * as THREE from 'three';
-    import { OrbitControls } from 'https://unpkg.com/three@0.128.0/examples/jsm/controls/OrbitControls.js';
+  <br/>
 
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x050510);
-    scene.fog = new THREE.FogExp2(0x050510, 0.002);
+  <!-- 3D-style badges -->
+  <img src="https://img.shields.io/badge/Focus-Full%20Stack%20Development-00C2FF?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Code-Python%20%7C%20JS%20%7C%20TypeScript-FFB000?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Tools-Docker%20%7C%20Git%20%7C%20Linux-7B68EE?style=for-the-badge" />
 
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 2, 12);
-    camera.lookAt(0, 0, 0);
+</div>
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
-    document.body.appendChild(renderer.domElement);
+---
 
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.autoRotate = false;
-    controls.enableZoom = true;
-    controls.zoomSpeed = 0.8;
-    controls.enablePan = false;
-    controls.target.set(0, 1, 0);
-    controls.maxPolarAngle = Math.PI / 2.2;
-    controls.minDistance = 5;
-    controls.maxDistance = 20;
+<h2 align="center">✨ About Me</h2>
 
-    const ambient = new THREE.AmbientLight(0x404060);
-    scene.add(ambient);
+<p align="center">
+  Passionate developer building <b>efficient</b>, <b>scalable</b>, and <b>user-friendly</b> digital solutions.<br/>
+  I love working across the stack — from polished UIs to optimized backend APIs.
+</p>
 
-    const keyLight = new THREE.PointLight(0x00c2ff, 1.5, 30);
-    keyLight.position.set(3, 5, 5);
-    scene.add(keyLight);
+<table align="center">
+  <tr>
+    <td>🔭 Currently building modern web & software solutions</td>
+  </tr>
+  <tr>
+    <td>🌱 Learning advanced backend architecture & performance optimization</td>
+  </tr>
+  <tr>
+    <td>💡 Interested in software engineering, cloud & product development</td>
+  </tr>
+  <tr>
+    <td>📫 Reach me via GitHub or email</td>
+  </tr>
+</table>
 
-    const fillLight = new THREE.PointLight(0xffaa00, 0.8, 30);
-    fillLight.position.set(-4, 2, 4);
-    scene.add(fillLight);
+---
 
-    const rimLight = new THREE.PointLight(0x7b68ee, 1.2, 25);
-    rimLight.position.set(-2, 1, -6);
-    scene.add(rimLight);
+<h2 align="center">🛠️ Tech Stack</h2>
 
-    const topLight = new THREE.DirectionalLight(0xffffff, 0.6);
-    topLight.position.set(0, 10, 0);
-    scene.add(topLight);
+<div align="center">
 
-    const nameGroup = new THREE.Group();
+  <!-- Languages -->
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
 
-    const plateWidth = 5.8;
-    const plateHeight = 2.2;
-    const plateDepth = 0.4;
-    const plateGeo = new THREE.BoxGeometry(plateWidth, plateHeight, plateDepth);
-    const plateMat = new THREE.MeshStandardMaterial({
-      color: 0x111122,
-      roughness: 0.25,
-      metalness: 0.85,
-      emissive: new THREE.Color(0x001122),
-      emissiveIntensity: 0.6,
-      transparent: true,
-      opacity: 0.95
-    });
-    const plate = new THREE.Mesh(plateGeo, plateMat);
-    plate.castShadow = true;
-    plate.receiveShadow = true;
-    plate.position.y = 1.8;
-    nameGroup.add(plate);
+  <br/><br/>
 
-    const edgeMat = new THREE.MeshStandardMaterial({
-      color: 0x00c2ff,
-      emissive: new THREE.Color(0x00c2ff),
-      emissiveIntensity: 1.2,
-      transparent: true,
-      opacity: 0.6
-    });
-    
-    const topEdge = new THREE.Mesh(new THREE.BoxGeometry(plateWidth + 0.1, 0.05, 0.1), edgeMat);
-    topEdge.position.set(0, 1.8 + plateHeight/2, 0);
-    nameGroup.add(topEdge);
-    const bottomEdge = new THREE.Mesh(new THREE.BoxGeometry(plateWidth + 0.1, 0.05, 0.1), edgeMat);
-    bottomEdge.position.set(0, 1.8 - plateHeight/2, 0);
-    nameGroup.add(bottomEdge);
-    const leftEdge = new THREE.Mesh(new THREE.BoxGeometry(0.05, plateHeight, 0.1), edgeMat);
-    leftEdge.position.set(-plateWidth/2, 1.8, 0);
-    nameGroup.add(leftEdge);
-    const rightEdge = new THREE.Mesh(new THREE.BoxGeometry(0.05, plateHeight, 0.1), edgeMat);
-    rightEdge.position.set(plateWidth/2, 1.8, 0);
-    nameGroup.add(rightEdge);
+  <!-- Frontend -->
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" />
 
+  <br/><br/>
 
-    function createTextTexture(text, color = '#ffffff', glowColor = '#00c2ff') {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = 1024;
-      canvas.height = 256;
+  <!-- Backend -->
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-404D59?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" />
+  <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" />
 
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  <br/><br/>
 
-      ctx.font = 'bold 120px "Inter", "Segoe UI", "Helvetica Neue", sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
+  <!-- Tools -->
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+  <img src="https://img.shields.io/badge/VSCode-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" />
 
-      // Glow
-      ctx.shadowColor = glowColor;
-      ctx.shadowBlur = 40;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 0;
+</div>
 
-      // Draw multiple passes for glow
-      ctx.fillStyle = color;
-      ctx.fillText(text, canvas.width/2, canvas.height/2);
-      
-      ctx.shadowBlur = 20;
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText(text, canvas.width/2, canvas.height/2);
+---
 
-      // Add a slight gradient overlay for metallic feel
-      const gradient = ctx.createLinearGradient(0, 100, 0, 200);
-      gradient.addColorStop(0, 'rgba(255,255,255,0.9)');
-      gradient.addColorStop(1, 'rgba(200,230,255,0.7)');
-      ctx.shadowBlur = 0;
-      ctx.fillStyle = gradient;
-      ctx.fillText(text, canvas.width/2, canvas.height/2);
+<h2 align="center">📊 GitHub Stats</h2>
 
-      return new THREE.CanvasTexture(canvas);
-    }
+<div align="center">
+  <img height="180" src="https://github-readme-stats.vercel.app/api?username=parmeshwar-durgist&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00C2FF&icon_color=7B68EE" />
+  <img height="180" src="https://github-readme-streak-stats.herokuapp.com/?user=parmeshwar-durgist&theme=tokyonight&hide_border=true&background=0D1117&stroke=00C2FF&ring=7B68EE" />
+</div>
 
-    // Name texture
-    const nameTexture = createTextTexture('PARMESHWAR', '#ffffff', '#00c2ff');
-    const nameMat = new THREE.MeshStandardMaterial({
-      map: nameTexture,
-      transparent: true,
-      emissive: new THREE.Color(0x004466),
-      emissiveIntensity: 0.8,
-      roughness: 0.2,
-      metalness: 0.1,
-      side: THREE.DoubleSide
-    });
-    const namePlane = new THREE.Mesh(new THREE.PlaneGeometry(5.2, 1.3), nameMat);
-    namePlane.position.set(0, 2.1, plateDepth/2 + 0.05);
-    nameGroup.add(namePlane);
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=parmeshwar-durgist&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00C2FF" />
+</div>
 
-    // Title texture
-    const titleTexture = createTextTexture('FULL STACK DEVELOPER', '#b0e0ff', '#7b68ee');
-    const titleMat = new THREE.MeshStandardMaterial({
-      map: titleTexture,
-      transparent: true,
-      emissive: new THREE.Color(0x221144),
-      emissiveIntensity: 0.5,
-      roughness: 0.3,
-      metalness: 0.2,
-      side: THREE.DoubleSide
-    });
-    const titlePlane = new THREE.Mesh(new THREE.PlaneGeometry(5.0, 0.7), titleMat);
-    titlePlane.position.set(0, 1.2, plateDepth/2 + 0.05);
-    nameGroup.add(titlePlane);
+---
 
-    // --- Add floating tech icons (small spheres / cubes) around the plate ---
-    const iconsGroup = new THREE.Group();
-    const iconColors = [0x00c2ff, 0xffaa00, 0x7b68ee, 0x00ffaa, 0xff66aa];
-    const iconPositions = [
-      { x: -3.2, y: 2.5, z: 1.5, color: 0x00c2ff, size: 0.25 },
-      { x: 3.4, y: 2.0, z: 1.2, color: 0xffaa00, size: 0.2 },
-      { x: -2.8, y: 0.8, z: 1.8, color: 0x7b68ee, size: 0.3 },
-      { x: 3.0, y: 1.0, z: 1.6, color: 0x00ffaa, size: 0.22 },
-      { x: -1.5, y: 3.2, z: 0.8, color: 0xff66aa, size: 0.18 },
-      { x: 2.0, y: 3.5, z: 0.5, color: 0x00c2ff, size: 0.2 },
-      { x: 0.5, y: 0.2, z: 2.2, color: 0xffaa00, size: 0.28 },
-      { x: -0.8, y: 2.8, z: 2.0, color: 0x7b68ee, size: 0.22 },
-    ];
+<h2 align="center">🚀 Featured Projects</h2>
 
-    iconPositions.forEach(pos => {
-      const geo = new THREE.IcosahedronGeometry(pos.size, 1);
-      const mat = new THREE.MeshStandardMaterial({
-        color: pos.color,
-        emissive: pos.color,
-        emissiveIntensity: 0.6,
-        roughness: 0.2,
-        metalness: 0.7,
-        transparent: true,
-        opacity: 0.9
-      });
-      const icon = new THREE.Mesh(geo, mat);
-      icon.position.set(pos.x, pos.y, pos.z);
-      icon.castShadow = true;
-      icon.receiveShadow = true;
-      iconsGroup.add(icon);
-    });
+<table align="center">
+  <tr>
+    <td>🚀 Modern web app development</td>
+  </tr>
+  <tr>
+    <td>🧠 Data-driven software solutions</td>
+  </tr>
+  <tr>
+    <td>⚙️ Backend systems & APIs</td>
+  </tr>
+  <tr>
+    <td>🌐 Responsive UI experiences</td>
+  </tr>
+</table>
 
-    // Add small rings around some icons for extra flair
-    const ringMat = new THREE.MeshStandardMaterial({
-      color: 0x00c2ff,
-      emissive: new THREE.Color(0x00c2ff),
-      emissiveIntensity: 0.8,
-      transparent: true,
-      opacity: 0.3,
-      side: THREE.DoubleSide
-    });
-    const ring1 = new THREE.Mesh(new THREE.TorusGeometry(0.45, 0.02, 16, 64), ringMat);
-    ring1.position.set(-3.2, 2.5, 1.5);
-    ring1.rotation.x = Math.PI / 2;
-    ring1.rotation.z = 0.5;
-    iconsGroup.add(ring1);
+---
 
-    const ring2 = new THREE.Mesh(new THREE.TorusGeometry(0.4, 0.02, 16, 64), ringMat);
-    ring2.position.set(3.0, 1.0, 1.6);
-    ring2.rotation.x = Math.PI / 3;
-    ring2.rotation.y = 0.8;
-    iconsGroup.add(ring2);
+<h2 align="center">📬 Connect</h2>
 
-    nameGroup.add(iconsGroup);
+<div align="center">
+  <a href="https://github.com/parmeshwar-durgist">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" />
+  </a>
+  <a href="mailto:your-email@example.com">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
+  </a>
+  <a href="https://www.linkedin.com/in/your-profile">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
+  </a>
+</div>
 
-    // --- Add a subtle base / platform beneath the plate ---
-    const baseGeo = new THREE.CylinderGeometry(3.5, 3.5, 0.2, 64);
-    const baseMat = new THREE.MeshStandardMaterial({
-      color: 0x0a0a20,
-      roughness: 0.4,
-      metalness: 0.9,
-      emissive: new THREE.Color(0x001122),
-      emissiveIntensity: 0.3
-    });
-    const base = new THREE.Mesh(baseGeo, baseMat);
-    base.position.set(0, -0.2, 0);
-    base.receiveShadow = true;
-    base.castShadow = true;
-    nameGroup.add(base);
+<br/>
 
-    // Add glowing ring on base
-    const baseRingGeo = new THREE.TorusGeometry(3.2, 0.03, 16, 100);
-    const baseRingMat = new THREE.MeshStandardMaterial({
-      color: 0x00c2ff,
-      emissive: new THREE.Color(0x00c2ff),
-      emissiveIntensity: 1.5,
-      transparent: true,
-      opacity: 0.5
-    });
-    const baseRing = new THREE.Mesh(baseRingGeo, baseRingMat);
-    baseRing.rotation.x = Math.PI / 2;
-    baseRing.position.set(0, 0, 0);
-    nameGroup.add(baseRing);
+<div align="center">
+  <img src="https://komarev.com/ghpvc/?username=parmeshwar-durgist&style=flat-square&color=00C2FF&label=PROFILE+VIEWS" alt="Profile Views" />
+</div>
 
-    // --- Position the entire group ---
-    nameGroup.position.y = 0.5;
-    nameGroup.position.z = 0;
-    scene.add(nameGroup);
-
-    // --- Add floating particles for atmosphere ---
-    const particlesGeo = new THREE.BufferGeometry();
-    const particlesCount = 1200;
-    const positions = new Float32Array(particlesCount * 3);
-    const colors = new Float32Array(particlesCount * 3);
-
-    for (let i = 0; i < particlesCount; i++) {
-      // Spread particles in a large sphere
-      const radius = 15 + Math.random() * 20;
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos((Math.random() * 2) - 1);
-      
-      const x = radius * Math.sin(phi) * Math.cos(theta);
-      const y = radius * Math.sin(phi) * Math.sin(theta) * 0.5; // flatten vertically
-      const z = radius * Math.cos(phi);
-      
-      positions[i*3] = x;
-      positions[i*3+1] = y * 0.8 + 2;
-      positions[i*3+2] = z;
-      
-      // Colors: cyan, purple, white, blue
-      const colorChoice = Math.random();
-      let r, g, b;
-      if (colorChoice < 0.4) {
-        r = 0.0; g = 0.76; b = 1.0; // cyan
-      } else if (colorChoice < 0.7) {
-        r = 0.48; g = 0.41; b = 0.93; // purple
-      } else {
-        r = 0.9; g = 0.9; b = 1.0; // white/blue
-      }
-      // Add some randomness
-      colors[i*3] = r * (0.6 + Math.random() * 0.4);
-      colors[i*3+1] = g * (0.6 + Math.random() * 0.4);
-      colors[i*3+2] = b * (0.6 + Math.random() * 0.4);
-    }
-
-    particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    particlesGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    const particlesMat = new THREE.PointsMaterial({
-      size: 0.15,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.8,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-
-    const particles = new THREE.Points(particlesGeo, particlesMat);
-    scene.add(particles);
-
-    // --- Add a second layer of tiny stars ---
-    const starsGeo = new THREE.BufferGeometry();
-    const starsCount = 2000;
-    const starPositions = new Float32Array(starsCount * 3);
-    for (let i = 0; i < starsCount; i++) {
-      starPositions[i*3] = (Math.random() - 0.5) * 200;
-      starPositions[i*3+1] = (Math.random() - 0.5) * 100;
-      starPositions[i*3+2] = (Math.random() - 0.5) * 200 - 50;
-    }
-    starsGeo.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const starsMat = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 0.08,
-      transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false
-    });
-    const stars = new THREE.Points(starsGeo, starsMat);
-    scene.add(stars);
-
-    // --- Animation Loop ---
-    let clock = new THREE.Clock();
-
-    function animate() {
-      const delta = clock.getDelta();
-      const elapsedTime = performance.now() * 0.001; // seconds
-
-      // Rotate the name group slowly
-      nameGroup.rotation.y = Math.sin(elapsedTime * 0.15) * 0.1;
-      nameGroup.rotation.x = Math.sin(elapsedTime * 0.2) * 0.03;
-
-      // Animate icons (bobbing and rotation)
-      iconsGroup.children.forEach((child, index) => {
-        if (child.isMesh) {
-          child.rotation.x += 0.005;
-          child.rotation.y += 0.008;
-          // Bobbing motion
-          const baseY = iconPositions[index]?.y || 2.0;
-          child.position.y = baseY + Math.sin(elapsedTime * 1.5 + index) * 0.15;
-        }
-      });
-
-      // Rotate base ring
-      baseRing.rotation.z += 0.002;
-
-      // Rotate particles slowly
-      particles.rotation.y += 0.0002;
-      stars.rotation.y += 0.0001;
-
-      // Camera subtle movement if not interacting
-      if (!controls.enabled) {
-      }
-
-      controls.update();
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener('resize', onWindowResize, false);
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    console.log('3D Profile Loaded – Parmeshwar Durgist');
-  </script>
-</body>
-</html>
+<!-- Footer wave -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:7B68EE,100:00C2FF&height=120&section=footer" width="100%" />
