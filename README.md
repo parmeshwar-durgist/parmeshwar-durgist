@@ -13,7 +13,6 @@
     background:#03040c;
   }
 
-  /* ---- Starfield ---- */
   .stars {
     position:fixed; inset:0;
     background-image:
@@ -29,7 +28,6 @@
   }
   @keyframes twinkle { 0%{opacity:.45} 100%{opacity:1} }
 
-  /* ---- Scene ---- */
   .scene {
     position:relative; width:100vw; height:100vh;
     display:flex; align-items:center; justify-content:center;
@@ -37,7 +35,6 @@
     z-index:2;
   }
 
-  /* ---- Glow orb ---- */
   .glow-orb {
     position:absolute; width:520px; height:520px; border-radius:50%;
     background:radial-gradient(circle, rgba(0,194,255,.18) 0%, rgba(123,104,238,.08) 40%, transparent 70%);
@@ -50,7 +47,6 @@
     50%{ transform:scale(1.18); opacity:1 }
   }
 
-  /* ---- 3D card group ---- */
   .card-group {
     transform-style:preserve-3d;
     animation:cardRotate 16s ease-in-out infinite alternate;
@@ -60,6 +56,7 @@
     50% { transform:rotateY(14deg)  rotateX(6deg) }
     100%{ transform:rotateY(-14deg) rotateX(8deg) }
   }
+
   .float-wrap {
     transform-style:preserve-3d;
     animation:floatY 5s ease-in-out infinite;
@@ -69,7 +66,6 @@
     50%{ transform:translateY(-14px) }
   }
 
-  /* ---- Plate ---- */
   .plate {
     position:relative; width:620px; height:280px; border-radius:32px;
     background:linear-gradient(145deg,#0d1226 0%,#060918 100%);
@@ -85,11 +81,13 @@
     align-items:center; justify-content:center;
     padding:30px; overflow:hidden;
   }
+
   .plate::before {
     content:''; position:absolute; inset:0; border-radius:32px;
     background:linear-gradient(135deg, rgba(0,194,255,.14) 0%, transparent 35%, transparent 65%, rgba(123,104,238,.14) 100%);
     pointer-events:none;
   }
+
   .plate::after {
     content:''; position:absolute; top:-80%; left:-80%; width:260%; height:260%;
     background:linear-gradient(115deg, transparent 32%, rgba(255,255,255,.04) 46%, rgba(0,194,255,.1) 50%, rgba(255,255,255,.04) 54%, transparent 68%);
@@ -102,7 +100,6 @@
     100%{ transform:rotate(25deg) translateX(35%) }
   }
 
-  /* ---- Text ---- */
   .name {
     position:relative; z-index:3;
     font-size:3.4rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
@@ -117,6 +114,7 @@
     0%  { filter:drop-shadow(0 0 14px rgba(0,194,255,.3)) }
     100%{ filter:drop-shadow(0 0 36px rgba(0,194,255,.75)) }
   }
+
   .subtitle {
     position:relative; z-index:3; margin-top:14px;
     font-size:.95rem; font-weight:400; letter-spacing:.4em;
@@ -124,16 +122,19 @@
     text-shadow:0 0 22px rgba(0,194,255,.35);
     transform:translateZ(30px);
   }
+
   .divider {
     position:relative; z-index:3; width:72%; height:1px; margin:24px 0 20px;
     background:linear-gradient(90deg, transparent, rgba(0,194,255,.5), rgba(123,104,238,.5), transparent);
     transform:translateZ(25px);
   }
+
   .badges {
     position:relative; z-index:3;
     display:flex; gap:14px; flex-wrap:wrap; justify-content:center;
     transform:translateZ(40px);
   }
+
   .badge {
     padding:8px 22px; border-radius:40px;
     font-size:.72rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
@@ -151,7 +152,6 @@
     50%{ transform:translateY(-4px) }
   }
 
-  /* ---- Floating icons ---- */
   .icon {
     position:absolute; border-radius:30% 70% 70% 30% / 30% 30% 70% 70%;
     animation:iconFloat 6s ease-in-out infinite;
@@ -181,7 +181,6 @@
     50%{ transform:translateY(-20px) rotate(14deg) scale(1.1) }
   }
 
-  /* ---- Particles ---- */
   .particle {
     position:absolute; border-radius:50%; background:#fff; opacity:0;
     animation:particleRise linear infinite; pointer-events:none; z-index:1;
@@ -193,14 +192,12 @@
     100%{ transform:translateY(-160px) translateX(50px); opacity:0 }
   }
 
-  /* ---- Footer ---- */
   .footer-credit {
     position:fixed; bottom:18px; left:0; width:100%; text-align:center;
     font-size:.68rem; letter-spacing:.3em; color:rgba(255,255,255,.25);
     text-transform:uppercase; pointer-events:none; z-index:10;
   }
 
-  /* ---- Responsive ---- */
   @media (max-width:720px) {
     .plate { width:90vw; height:240px; padding:20px; border-radius:24px; }
     .name { font-size:2.1rem; }
